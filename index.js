@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors');
 const port = process.env.PORT || 5000
 
 const server = require('http').createServer(app);
@@ -16,6 +17,7 @@ wss.on("message", function incoming(message) {
     console.log("received %s", message);
 })
 
+app.use(cors());
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
