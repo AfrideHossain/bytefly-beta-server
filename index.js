@@ -5,7 +5,12 @@ const app = require('express')();
 const http = require('http').Server(app);
 
 //import socket.io and create IO server with http server
-const io = require('socket.io')(http);
+const io = require('socket.io')(http, {
+    cors: {
+        origin: "https://bytefly-beta-server.herokuapp.com/",
+        methods: ["GET", "POST"]
+    }
+});
 
 const cors = require('cors');
 
