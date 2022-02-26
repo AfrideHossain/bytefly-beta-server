@@ -5,18 +5,6 @@ const port = process.env.PORT || 5000
 
 const eWss = require('express-ws')(app);
 
-app.ws('/', (ws, req) => {
-    ws.on("connection", (ws) => {
-        console.log("A new client connected");
-        ws.send("Welcome new user");
-    });
-
-    ws.on("message", function incoming(message) {
-        console.log("received %s", message);
-    })
-
-})
-
 /*
 const server = require('http').createServer(app);
 const Websocket = require('ws');
@@ -31,7 +19,7 @@ wss.on("message", function incoming(message) {
     console.log("received %s", message);
 })
 */
-
+app.use(express.json());
 app.use(cors());
 app.get('/', (req, res) => {
     res.send('Hello World!')
@@ -39,4 +27,20 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
+})
+
+app.ws('/', (ws, req) => {
+    ws.on("connection", (wss) => {
+        console.log("A new client connected");
+        wss.send("Welcome new user");
+    });
+
+    ws.on("message", function incoming(message) {
+        console.log("received %s", message);
+
+        eWss.getWss().clients.forEach(function each(client) {
+            client.send(message);
+        })
+    })
+
 })
