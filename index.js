@@ -1,16 +1,14 @@
 //import express and call it
-const express = require('express')
-const app = express()
+const app = require('express')();
 
 //import http and create server
-const http = require('http');
-const server = http.Server(app);
+const http = require('http').Server(app);
 
 //import socket.io and create IO server with http server
-const io = require('socket.io')(server);
+const io = require('socket.io')(http);
 
 const cors = require('cors');
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 5000;
 
 
 /*
