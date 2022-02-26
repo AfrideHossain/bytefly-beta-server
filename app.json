@@ -1,0 +1,20 @@
+{
+    "name": "bytefly-beta-server",
+    "description": "duplex server for byteFly",
+    "website": "https://github.com/AfrideHossain/bytefly-beta-server",
+    "repository": "https://github.com/AfrideHossain/bytefly-beta-server",
+    "logo": "",
+    "success_url": "/",
+    "keywords": [
+        "node",
+        "express",
+        "socket.io",
+        "realtime",
+        "websocket"
+    ],
+    "scripts": {},
+    "addons": [],
+    "env": {
+        "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-nodejs"
+    }
+}
