@@ -7,7 +7,11 @@ const http = require('http').Server(app);
 //import socket.io and create IO server with http server
 const io = require('socket.io')(http);
 
+const cors = require('cors');
+
 const port = process.env.PORT || 5000;
+
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
