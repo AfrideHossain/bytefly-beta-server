@@ -84,6 +84,10 @@
             }
         });
 
+        socket.on('connection', (sock) => {
+            sock.broadcast.emit('hi');
+        });
+
         socket.on('message', function (msg) {
             var item = document.createElement('li');
             item.textContent = msg;
