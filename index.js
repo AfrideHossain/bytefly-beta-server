@@ -23,7 +23,6 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    socket.broardcast.emit('hi');
     socket.on('message', (msg) => {
         io.emit('message', msg);
     });
